@@ -17,8 +17,8 @@ jobs:
           pip install --upgrade pip
           pip install --upgrade flet
       - name: Build Web App
-        # This is the crucial change
-        run: python -m flet build web --base-href /minesweeper/
+        # Removed --base-href entirely to prevent version incompatibility
+        run: python -m flet build web
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
