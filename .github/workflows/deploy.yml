@@ -21,11 +21,12 @@ jobs:
           pip install --upgrade pip
           pip install flet
       - name: Build Web App
-        # Use --base-url for subdirectories, --no-prompt for automation
+        # Use --base-url to match your repository name exactly
         run: flet build web --base-url /minesweeper/ --no-prompt
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # Flet web builds usually go to 'dist' folder
-          publish_dir: ./dist
+          # Flet typically outputs to 'build/web'
+          publish_dir: build/web
+          publish_branch: gh-pages
