@@ -162,7 +162,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779428626645</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="git init&#10;git add .&#10;git commit -m &quot;init: bootstrap core project architecture&quot;&#10;git branch -M main&#10;git remote add origin https://github.com/gnssreelaya1509/minesweeper-game.git&#10;git push -u origin main">
+      <option name="closed" value="true" />
+      <created>1779429078118</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1779429078118</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

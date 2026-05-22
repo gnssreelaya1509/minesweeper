@@ -7,8 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -21,12 +19,15 @@ jobs:
           pip install --upgrade pip
           pip install flet
       - name: Build Web App
-        # Use --base-url to match your repository name exactly
         run: flet build web --base-url /minesweeper/ --no-prompt
+      - name: Debug and List Files
+        run: |
+          echo "Listing contents of the project directory:"
+          find . -maxdepth 3 -not -path '*/.*'
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # Flet typically outputs to 'build/web'
+          # We will update this path based on what the debug log shows
           publish_dir: build/web
           publish_branch: gh-pages
