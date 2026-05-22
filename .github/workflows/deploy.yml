@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -22,12 +24,11 @@ jobs:
         run: flet build web --base-url /minesweeper/ --no-prompt
       - name: Debug and List Files
         run: |
-          echo "Listing contents of the project directory:"
-          find . -maxdepth 3 -not -path '*/.*'
+          echo "Listing contents of the build directory:"
+          find build -maxdepth 3
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # We will update this path based on what the debug log shows
           publish_dir: build/web
           publish_branch: gh-pages
