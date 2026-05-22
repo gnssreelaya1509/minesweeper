@@ -2,7 +2,7 @@ name: Deploy Minesweeper
 
 on:
   push:
-    branches: [ main ]  # <--- Ensure this matches your actual branch name (main or master)
+    branches: [ main ]
 
 jobs:
   build:
@@ -21,7 +21,8 @@ jobs:
           pip install --upgrade pip
           pip install flet
       - name: Build Web App
-        run: flet build web --no-prompt
+        # We use the repo name for base-href to fix the 404
+        run: flet build web --base-href /minesweeper/ --no-prompt
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
