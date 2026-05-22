@@ -12,13 +12,13 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install Flet and CLI
+      - name: Install Flet
         run: |
           pip install --upgrade pip
           pip install flet
       - name: Build Web App
-        # This uses the command directly, which is now supported by the installed package
-        run: flet build web
+        # The --no-prompt flag is mandatory to prevent EOFError in automation
+        run: flet build web --no-prompt
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
