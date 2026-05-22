@@ -1,10 +1,14 @@
 name: Deploy Minesweeper
+
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]  # <--- Ensure this matches your actual branch name (main or master)
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -17,7 +21,6 @@ jobs:
           pip install --upgrade pip
           pip install flet
       - name: Build Web App
-        # The --no-prompt flag is mandatory to prevent EOFError in automation
         run: flet build web --no-prompt
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
